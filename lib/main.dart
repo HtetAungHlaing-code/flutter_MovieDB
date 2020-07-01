@@ -44,6 +44,9 @@ class _HomePageState extends State<HomePage> {
     var response = await http.get(url);
   var jsonData = jsonDecode(response.body);
   moviesDb = MoviesDb.fromJson(jsonData);
+  setState(() {
+
+  });
 //  debugPrint(moviesDb.toString());
 //  setState(() {
 //    moviesData = data["data"];
@@ -64,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         title: Text("Movies"),
         centerTitle: true,
       ),
-      body: http.Response == null ? Center(
+      body: moviesDb == null ? Center(
         child: CircularProgressIndicator(),
       ) : GridView.count(
           crossAxisCount: 2,
@@ -122,7 +125,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.amberAccent,
       appBar: AppBar(
         title: Text("Movies Details"),
         centerTitle: true,
